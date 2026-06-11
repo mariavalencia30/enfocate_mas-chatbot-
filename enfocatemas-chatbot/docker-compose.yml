@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  chatbot:
+    build: .
+    container_name: enfocate_chatbot
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - WHATSAPP_ACCESS_TOKEN=${WHATSAPP_ACCESS_TOKEN}
+      - WHATSAPP_PHONE_NUMBER_ID=${WHATSAPP_PHONE_NUMBER_ID}
+      - WHATSAPP_VERIFY_TOKEN=${WHATSAPP_VERIFY_TOKEN}
+      - WHATSAPP_APP_SECRET=${WHATSAPP_APP_SECRET}
+    volumes:
+      - ./data:/app/data        # CSV 
+      - ./logs:/app/logs        # Logs fuera del contenedor
+      - ./data/embeddings:/app/data/embeddings  # Vector store persistente
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  
+  nginx:
+    image: nginx:alpine
+    container_name: enfocate_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - chatbot
+    restart: unless-stopped
+    profiles:
+      - production  # Esto para docker, "la otra entrega"

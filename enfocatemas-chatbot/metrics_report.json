@@ -1,0 +1,80 @@
+{
+  "timestamp": "2026-05-24T20:29:06.935733",
+  "url": "http://localhost:8000",
+  "latencia": [
+    {
+      "mensaje": "hola",
+      "avg_ms": 7676,
+      "p95_ms": 3776
+    },
+    {
+      "mensaje": "horarios",
+      "avg_ms": 4834,
+      "p95_ms": 3956
+    },
+    {
+      "mensaje": "programas",
+      "avg_ms": 6201,
+      "p95_ms": 4860
+    },
+    {
+      "mensaje": "+57 3874290099",
+      "avg_ms": 59,
+      "p95_ms": 59
+    },
+    {
+      "mensaje": "+57 300 999 9999",
+      "avg_ms": 60,
+      "p95_ms": 61
+    },
+    {
+      "mensaje": "xkdzpq",
+      "avg_ms": 1888,
+      "p95_ms": 3288
+    }
+  ],
+  "concurrencia": [
+    {
+      "usuarios": 1,
+      "exitos": 1,
+      "fallos": 0,
+      "avg_ms": 3082,
+      "p95_ms": 3082,
+      "tps": 0.32
+    },
+    {
+      "usuarios": 5,
+      "exitos": 5,
+      "fallos": 0,
+      "avg_ms": 3424,
+      "p95_ms": 3512,
+      "tps": 1.38
+    },
+    {
+      "usuarios": 10,
+      "exitos": 10,
+      "fallos": 0,
+      "avg_ms": 3561,
+      "p95_ms": 3770,
+      "tps": 2.6
+    },
+    {
+      "usuarios": 20,
+      "exitos": 20,
+      "fallos": 0,
+      "avg_ms": 4294,
+      "p95_ms": 4615,
+      "tps": 4.33
+    }
+  ],
+  "flujos": [
+    {
+      "flujo": "login_y_pagos",
+      "ok": false
+    },
+    {
+      "flujo": "login_y_asistencia",
+      "ok": false
+    }
+  ]
+}
